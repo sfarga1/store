@@ -1,0 +1,27 @@
+
+- Crear HOME
+
+- Crear HEADER
+
+- Crear NAVBAR y ponerlo dentro de HEADER
+
+- Crear FOOTER
+
+-----------------------------
+	   NAVBAR
+HOME 	PRODUCTOS 	ADMIN
+-----------------------------
+
+
+
+Notas:
+
+- La info va en JSONs
+
+- ADMIN es la pestaña con el formulario
+
+- Los productos que se añadan en ADMIN deben verse inmediatamente en PRODUCTOS, pero no deben permanecer tras recargar página
+
+- Hay que gestionar errores !!!!!
+
+- HEADER y FOOTER deben permanecer siempre visibles

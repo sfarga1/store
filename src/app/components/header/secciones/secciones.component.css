@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para centrar verticalmente */
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.ciudades ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Para centrar horizontalmente */
+    padding: 0;
+    margin: 0;
+}
+
+.ciudades ul li {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.ciudades ul li a {
+    text-decoration: none; /* Quitar subrayado */
+    color: inherit; /* Utilizar el color heredado del texto */
+    padding: 8px 16px; /* Agregar relleno para un aspecto de botón */
+    border: 1px solid #ccc; /* Agregar un borde */
+    background-color: transparent; /* Hacer el fondo transparente */
+    border-radius: 4px; /* Agregar bordes redondeados */
+    display: inline-block; /* Hacer que el enlace tenga un tamaño definido */
+    width: auto; /* Opcional: permite que el ancho se ajuste al contenido */
+    height: auto; /* Opcional: permite que la altura se ajuste al contenido */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar transición suave */
+    
+}
+
+.ciudades ul li a:hover {
+    background-color: #fff6e0; /* Cambiar el color de fondo al pasar el ratón */
+    transform: scale(1.3);
+}
+

@@ -1,0 +1,18 @@
+<div class="contenido">
+
+    @for (seccion of secciones; track $index) {
+    <div class="ciudad{{$index+1}}">
+
+        <h3>{{seccion['titulo']}}</h3>
+        <div class="c{{$index+1}}-contenido" id="{{seccion['id']}}">
+            @if (($index % 2) !== 0) {
+            <img src="{{seccion['imagen']}}" alt="">
+            <p>{{seccion['contenido']}}</p>
+            } @else {
+            <p>{{seccion['contenido']}}</p>
+            <img src="{{seccion['imagen']}}" alt="">
+            }
+        </div>
+    </div>
+    }
+</div>

@@ -1,79 +1,20 @@
-/* Estilos para centrar el contenido y organizarlo en una columna */
+
 .contenido {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; /* Organiza los elementos en una columna */
+    
 }
+ h1{
+    font-size: 2.2em; 
+    color: #333;
+    margin-top: 8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);  
+ }
 
-.ciudad1,
-.ciudad2,
-.ciudad3,
-.ciudad4 {
-    text-align: center; /* Centra el contenido horizontalmente */
-    margin: 3vh; /* Espacio entre cada ciudad */
-    border-bottom: 2px solid #fff6e0; /* Agrega un borde en la parte inferior */
-    padding-bottom: 20px; /* Añade espacio entre el borde y el contenido */
-}
-
-.ciudad4:last-child {
-    border-bottom: none; /* Elimina el borde inferior solo para la última ciudad */
-}
-
-.ciudad4 {
-    margin-bottom: 6vh; /* Aumenta el espacio entre la última ciudad y el borde inferior */
-}
-
-.ciudad1 img,
-.ciudad2 img,
-.ciudad3 img,
-.ciudad4 img {
-    display: block; /* Asegura que la imagen se muestre correctamente */
-    width: auto; /* Ajusta el tamaño de la imagen según sea necesario */
-    height: auto;
-    margin-top: 10px; /* Espacio entre el texto y la imagen */
-    margin-bottom: 3.5rem;
-
-    border-radius: 10px; /* Establece el radio de las esquinas del borde */
-
-}
-
-.ciudad2 img {
-    width: 60vh;
-}
-
-.c1-contenido,
-.c2-contenido,
-.c3-contenido,
-.c4-contenido {
-    display: flex;
-    flex-direction: row;
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-.c1-contenido p,
-.c2-contenido p,
-.c3-contenido p,
-.c4-contenido p {
-    margin: 4rem; 
-    width: 35vh; 
-    text-align: justify;
-    height: auto;
-
-    border-radius: 10px; 
-    padding: 20px;
-    background-color: #fff6e0;
-    margin-bottom: 6rem;
-}
-
-h3{
-    margin-bottom: 7vh;
-    font-size: 2rem;
+ h2 {
+    font-size: 2.2em; 
     color: #333;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
-    
-} :first-child {
-    margin-top: 2.5vh;
-}
-
+ }

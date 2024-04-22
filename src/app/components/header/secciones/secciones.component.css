@@ -9,14 +9,16 @@ body {
 .navbar {
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .ciudades ul {
     display: flex;
     flex-direction: row;
     justify-content: center; /* Para centrar horizontalmente */
-    padding: 0;
+    padding: 4px;
     margin: 0;
+    background-color: #cf1111;
 }
 
 .ciudades ul li {
@@ -28,7 +30,7 @@ body {
     text-decoration: none; /* Quitar subrayado */
     color: inherit; /* Utilizar el color heredado del texto */
     padding: 8px 16px; /* Agregar relleno para un aspecto de botón */
-    border: 1px solid #ccc; /* Agregar un borde */
+    border: 1px solid #cf1111; /* Agregar un borde */
     background-color: transparent; /* Hacer el fondo transparente */
     border-radius: 4px; /* Agregar bordes redondeados */
     display: inline-block; /* Hacer que el enlace tenga un tamaño definido */
@@ -39,7 +41,9 @@ body {
 }
 
 .ciudades ul li a:hover {
-    background-color: #fff6e0; /* Cambiar el color de fondo al pasar el ratón */
+    background-color: white; /* Cambiar el color de fondo al pasar el ratón */
+    color: #cf1111;
     transform: scale(1.3);
+    border: 1px solid #333;; /* Agregar un borde */
 }
 

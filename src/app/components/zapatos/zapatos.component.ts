@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Product } from '../../product.model';
 import { ProductService } from '../../services/product-service.service';
 
 @Component({
@@ -10,10 +10,15 @@ import { ProductService } from '../../services/product-service.service';
 })
 export class ZapatosComponent {
 
+  products: Product[] = [];
+
   constructor(private productService:ProductService) {}
 
-  // ngInit() {
-  //   this.productService.subscribe()
-  // }
+  ngOnInit() {
+    this.productService.productos.subscribe(products => {
+      // Aquí manejas los productos
+      console.log(products);
+    });
+  }
 
 }

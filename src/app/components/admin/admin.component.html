@@ -1,7 +1,14 @@
 <form [formGroup]="myForm" (submit)="onSubmit()">
     <label for="reference"> Referencia</label>
     <input type="text" name="reference" id="reference" formControlName="reference">
-
+    <label for="description"> Descripción</label>
+    <input type="text" name="description" id="description" formControlName="description">
+    <label for="price"> Precio</label>
+    <input type="number" name="price" id="price" formControlName="price">
+    <label for="size"> Talla</label>
+    <input type="number" name="size" id="size" formControlName="size">
+    <label for="category"> Categoría</label>
+    <input type="text" name="category" id="category" formControlName="category">
     <button type="submit">
         Enviar
     </button>

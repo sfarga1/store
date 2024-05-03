@@ -1,43 +1,56 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product-service.service';
+import { Product } from '../../product.model';
 
 @Component({
   selector: 'app-admin',
-  standalone: true,
   imports: [ReactiveFormsModule],
+  standalone: true,
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
 
-constructor(private productService: ProductService) {}
-
   myForm = new FormGroup({
-    'reference' : new FormControl('') // añadir mas campos
+    reference: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    size: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
   });
 
-
-
-  // producto = {
-  //   reference: String
-  // };
-
-  onSubmit() {
-
-    // crear interface
-    // this.producto {
-    //   this.name = valor,
-    // }
-    console.log(this.myForm.value);
-
-
-    //this.productService.addProduct(producto: Producto) // Produto = interface
-
-
-
+  product: Product = {
+    reference: '',
+    description: '',
+    price: 0,
+    size: 0,
+    category: ''
   }
 
+  constructor(private productService: ProductService) { }
+
+  onSubmit() {
+    if (this.myForm.valid) {
+      //console.log(this.myForm.value?.reference)
+      this.product = {
+        reference: this.myForm.value?.reference,
+        description: this.myForm.value?.description,
+        price: this.myForm.value?.price,
+        size: this.myForm.value?.size,
+        category: this.myForm.value?.category
+      };
+
+      console.log(this.product);
+
+
+
+      this.productService.addProduct(this.product);
+      this.myForm.reset();
+    }
+  }
+
+  // get reference() {
+  //   return this.myForm.get('reference');
+  // }
 }

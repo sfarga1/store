@@ -2,18 +2,18 @@
     <h1 class="mt-5">
         Catálogo de Zapatos Farga
     </h1>
-    <!-- @for(item of products; track item;) {
-        <div class="bg-slate-50 rounded-xl p-10">
-            <h3 class="m-10">{{item.reference}}</h3>
-           
-        </div>
-
-    } -->
-
-
-
-    <!-- <div class="flex align-middle">
-        <div class="bg-slate-50 rounded-xl p-10">
+    <div class="flex align-middle">
+        @for(product of products; track product;) {
+            <div class="producto">
+                <h3 class="m-10">{{product.title}}</h3>
+                <p class="m-10">Referencia: {{product.reference}}</p>
+                <p class="m-10">Descripción: {{product.description}}</p>
+                <p class="m-10">Precio: {{product.price}}</p>
+                <p class="m-10">Talla: {{product.size}}</p>
+                <p class="m-10">Categoría: {{product.category}}</p>
+            </div>
+            }
+        <div class="producto">
             <h3 class="m-10">Farga POP EXTREME Blancas 43</h3>
             <p>Referencia: ABC12345678</p>
             <p>Descripción: Épicos zapatos color blanco nube. Calidad premium 4k</p>
@@ -21,7 +21,7 @@
             <p>Talla: 43</p>
             <p>Categoría: Deportivas</p>
         </div>
-        <div class="bg-slate-50 rounded-xl p-10">
+        <div class="producto">
             <h3 class="m-10">Farga HIP ROUND Rojas 41</h3>
             <p>Referencia: DEF91011121</p>
             <p>Descripción: Espectaculares zapatos color rojo fuego. Calidad semipremium 2k</p>
@@ -29,6 +29,5 @@
             <p>Talla: 41</p>
             <p>Categoría: Deportivas</p>
         </div>
-        
-    </div> -->
+    </div>
 </div>

@@ -18,6 +18,7 @@ export class ZapatosComponent {
     this.productService.productos.subscribe(products => {
       // Aquí manejas los productos
       console.log(products);
+      this.products = products;
     });
   }
 

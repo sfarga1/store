@@ -13,6 +13,7 @@ import { Product } from '../../product.model';
 export class AdminComponent {
 
   myForm = new FormGroup({
+    title: new FormControl('', [Validators.required]),
     reference: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
@@ -21,6 +22,7 @@ export class AdminComponent {
   });
 
   product: Product = {
+    title: '',
     reference: '',
     description: '',
     price: 0,
@@ -34,6 +36,7 @@ export class AdminComponent {
     if (this.myForm.valid) {
       //console.log(this.myForm.value?.reference)
       this.product = {
+        title: this.myForm.value?.title,
         reference: this.myForm.value?.reference,
         description: this.myForm.value?.description,
         price: this.myForm.value?.price,

@@ -1,0 +1,50 @@
+.custom-form {
+    background-color: #cf1111;
+    color: white;
+    padding: 20px;
+    border: 2px solid #cf1111;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.custom-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px;
+    border-radius: 5px;
+}
+
+.custom-form button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.custom-form button:hover {
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px;
+    border-radius: 5px;
+    color: black; /* Agregar esta línea */
+}

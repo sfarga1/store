@@ -1,20 +1,58 @@
 
-.zapatos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    
-}
  h1{
     font-size: 2.2em; 
     color: #333;
     margin-top: 8rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);  
+    margin-bottom: 70px;
+    margin-left: 36%;
  }
 
- h2 {
-    font-size: 2.2em; 
-    color: #333;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
- }
+ /* Estilos generales */
+.zapatos {
+   font-family: Arial, sans-serif;
+}
+
+/* Estilos para cada producto */
+.bg-slate-50 {
+   background-color: #cf1111; /* Negro azulado */
+   color: #fff; /* Texto blanco */
+}
+
+.rounded-xl {
+   border-radius: 20px;
+}
+
+.p-10 {
+   padding: 10px;
+}
+
+.mt-5 {
+   margin-top: 20px;
+}
+
+/* Estilos para los productos individuales */
+h3 {
+   font-size: 1.5em;
+   margin: 10px;
+}
+
+p {
+   margin: 5px 10px;
+}
+
+/* Estilos para la sección de productos */
+.flex {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+/* Estilos para los colores de la web */
+.bg-blanco {
+   background-color: #fff; /* Blanco */
+}
+
+.bg-rojo {
+   background-color: #cf1111; /* Rojo */
+}

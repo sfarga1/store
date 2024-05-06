@@ -1,4 +1,6 @@
-<form [formGroup]="myForm" (submit)="onSubmit()">
+<form [formGroup]="myForm" (submit)="onSubmit()" class="custom-form">
+    <label for="reference"> Título</label>
+    <input type="text" name="title" id="title" formControlName="title">
     <label for="reference"> Referencia</label>
     <input type="text" name="reference" id="reference" formControlName="reference">
     <label for="description"> Descripción</label>

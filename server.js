@@ -1,35 +1,40 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const app = express();
 const PORT = 3000;
 
+// Permite que el servidor acepte solicitudes CORS desde cualquier origen
 app.use(cors());
+
+// Parsea las solicitudes con formato JSON
 app.use(bodyParser.json());
 
 // Configuración de la conexión a MySQL
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
   host: 'localhost',
-  user: 'tu_usuario',
-  password: 'tu_contraseña',
-  database: 'tu_basededatos'
+  user: 'root',
+  password: 'Monlau2024',
+  database: 'zapatos'
 });
 
-connection.connect((error) => {
-  if (error) {
-    console.error('Error al conectar a la base de datos MySQL:', error);
+// Conectar a MySQL
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
     return;
   }
-  console.log('Conexión exitosa a la base de datos MySQL');
+  console.log('Connected to MySQL');
 });
 
-// Ruta para obtener todos los zapatos
+// Ruta para obtener todos los productos
 app.get('/api/products', (req, res) => {
-  connection.query('SELECT * FROM products', (error, results) => {
-    if (error) {
-      console.error('Error al obtener los productos:', error);
+  const query = 'SELECT * FROM products';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching products:', err);
       res.status(500).json({ message: 'Error al obtener los productos' });
       return;
     }
@@ -37,58 +42,69 @@ app.get('/api/products', (req, res) => {
   });
 });
 
-// Ruta para agregar un nuevo zapato
-app.post('/api/products', (req, res) => {
-  const productData = req.body;
-  connection.query('INSERT INTO products SET ?', productData, (error, result) => {
-    if (error) {
-      console.error('Error al crear un nuevo producto:', error);
-      res.status(500).json({ message: 'Error al crear un nuevo producto' });
-      return;
-    }
-    productData.id = result.insertId;
-    res.status(201).json(productData);
-  });
-});
-
-// Ruta para obtener un zapato por ID
+// Ruta para obtener un producto por ID
 app.get('/api/products/:id', (req, res) => {
-  const id = req.params.id;
-  connection.query('SELECT * FROM products WHERE id = ?', id, (error, results) => {
-    if (error) {
-      console.error('Error al obtener el producto:', error);
+  const id = parseInt(req.params.id);
+  const query = 'SELECT * FROM products WHERE id = ?';
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Error fetching product by ID:', err);
       res.status(500).json({ message: 'Error al obtener el producto' });
       return;
     }
     if (results.length === 0) {
-      res.status(404).json({ message: 'Zapato no encontrado' });
+      res.status(404).json({ message: 'Producto no encontrado' });
       return;
     }
     res.json(results[0]);
   });
 });
 
-// Ruta para actualizar un zapato por ID
-app.put('/api/products/:id', (req, res) => {
-  const id = req.params.id;
-  const updatedProductData = req.body;
-  connection.query('UPDATE products SET ? WHERE id = ?', [updatedProductData, id], (error) => {
-    if (error) {
-      console.error('Error al actualizar el producto:', error);
-      res.status(500).json({ message: 'Error al actualizar el producto' });
+// Ruta para agregar un nuevo producto
+app.post('/api/products', (req, res) => {
+  const producto = req.body;
+  const query = 'INSERT INTO products SET ?';
+  db.query(query, producto, (err, results) => {
+    if (err) {
+      console.error('Error adding product:', err);
+      res.status(500).json({ message: 'Error al agregar el producto' });
       return;
     }
-    res.json(updatedProductData);
+    res.status(201).json({ id: results.insertId, ...producto });
   });
 });
 
-// Ruta para eliminar un zapato por ID
+// Ruta para actualizar un producto por ID
+app.put('/api/products/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const producto = req.body;
+  const query = 'UPDATE products SET ? WHERE id = ?';
+  db.query(query, [producto, id], (err, results) => {
+    if (err) {
+      console.error('Error updating product:', err);
+      res.status(500).json({ message: 'Error al actualizar el producto' });
+      return;
+    }
+    if (results.affectedRows === 0) {
+      res.status(404).json({ message: 'Producto no encontrado' });
+      return;
+    }
+    res.json({ id, ...producto });
+  });
+});
+
+// Ruta para eliminar un producto por ID
 app.delete('/api/products/:id', (req, res) => {
-  const id = req.params.id;
-  connection.query('DELETE FROM products WHERE id = ?', id, (error) => {
-    if (error) {
-      console.error('Error al eliminar el producto:', error);
+  const id = parseInt(req.params.id);
+  const query = 'DELETE FROM products WHERE id = ?';
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Error deleting product:', err);
       res.status(500).json({ message: 'Error al eliminar el producto' });
+      return;
+    }
+    if (results.affectedRows === 0) {
+      res.status(404).json({ message: 'Producto no encontrado' });
       return;
     }
     res.status(204).end();
